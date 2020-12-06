@@ -4,7 +4,6 @@ package edu.phystech.demo.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.phystech.demo.Secrets;
 import edu.phystech.demo.utils.WeatherData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
