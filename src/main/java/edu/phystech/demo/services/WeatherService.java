@@ -45,10 +45,10 @@ public class WeatherService {
     }
 
     private List<WeatherData> getWeatherData(int n, String city) {
-        LocalDate today = LocalDate.now();
+        LocalDate currentDate = LocalDate.now();
         List<WeatherData> weatherList = new ArrayList<>(n);
         for (int i = 0; i < n; ++i) {
-            LocalDate day = today.minusDays(i);
+            LocalDate day = currentDate.minusDays(i);
             ResponseEntity<String> response = restTemplate.getForEntity(createRequestString(day, city), String.class);
             WeatherData weather = parseWeatherData(response);
             weatherList.add(weather);
