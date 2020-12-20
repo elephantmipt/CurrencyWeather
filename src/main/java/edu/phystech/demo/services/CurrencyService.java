@@ -16,7 +16,7 @@ public class CurrencyService {
     private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
     private final static String charCode = "USD";
 
-    public List<Double> getCurrencyData(int nDays) throws Exception {
+    public List<Double> getCurrencyData(int nDays){
         RestTemplate restTemplate = new RestTemplate();
         LocalDate currentDate = LocalDate.now();
         List<Double> currencyList = new ArrayList<>(nDays);
@@ -25,7 +25,11 @@ public class CurrencyService {
             String response =
                     restTemplate.getForEntity(createRequestString(day), String.class).getBody();
             CurrencyValues currencyValues = new CurrencyValues(response);
-            currencyList.add(currencyValues.GetValue("USD"));
+            try {
+                currencyList.add(currencyValues.GetValue("USD"));
+            } catch (Exception e) {
+                System.out.println("Failed");
+            }
 
 
         }

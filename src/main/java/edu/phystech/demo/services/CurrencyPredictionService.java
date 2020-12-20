@@ -15,12 +15,6 @@ public class CurrencyPredictionService {
 
         private final int PERIOD_SIZE_TO_FIT = 7;
 
-        public void PredictCurrencyByWeatherService(WeatherService weatherService, CurrencyService currencyService) throws Exception {
-            this.weatherService = weatherService;
-            this.currencyService = currencyService;
-            this.regressionModel = new SimpleRegression();
-            fit();
-        }
 
     public CurrencyPredictionService(WeatherService weatherService, CurrencyService currencyService) {
         this.weatherService = weatherService;
