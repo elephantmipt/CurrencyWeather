@@ -15,12 +15,7 @@ import java.util.List;
 public class CurrencyService {
     private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
     private final static String charCode = "USD";
-    private final RestTemplate restTemplate;
 
-    @Autowired
-    public CurrencyService(RestTemplateBuilder builder){
-        restTemplate = builder.build();
-    }
 
     public List<Double> getCurrencyData(int nDays){
         RestTemplate restTemplate = new RestTemplate();
