@@ -10,16 +10,16 @@ import java.util.stream.IntStream;
 @Service
 public class CurrencyPredictionService {
 
-        private final SimpleRegression regressionModel;
+        private SimpleRegression regressionModel;
         private WeatherService weatherService;
         private CurrencyService currencyService;
 
         private final int PERIOD_SIZE_TO_FIT = 7;
 
-        public void PredictCurrencyByWeatherService(WeatherService weatherService, CurrencyService currencyService) {
+        public void PredictCurrencyByWeatherService(WeatherService weatherService, CurrencyService currencyService) throws Exception {
             this.weatherService = weatherService;
             this.currencyService = currencyService;
-            regressionModel = new SimpleRegression();
+            this.regressionModel = new SimpleRegression();
             fit();
         }
 
@@ -33,7 +33,7 @@ public class CurrencyPredictionService {
             return predict(tomorrowForecast);
         }
 
-        private void fit() {
+        private void fit() throws Exception {
             List<WeatherData> weatherDataList = weatherService.getWeatherDataHistory(PERIOD_SIZE_TO_FIT);
             List<Double> currencyList = currencyService.getCurrencyData(PERIOD_SIZE_TO_FIT);
 

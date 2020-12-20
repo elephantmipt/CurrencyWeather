@@ -1,36 +1,34 @@
 package edu.phystech.demo.utils;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-@XmlRootElement(name = "ValCurs")
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.XML;
+
+
 public class CurrencyValues implements Serializable {
-    @JacksonXmlElementWrapper(useWrapping = false)
-    @JacksonXmlProperty(localName = "Valute")
-    private final List<CurrencyItem> currencyItemList;
 
-    public List<CurrencyItem> getCurrencyItemList() {
-        return currencyItemList;
+    private JSONObject jsonValues;
+
+    public CurrencyValues(String XMLFile) {
+        jsonValues = XML.toJSONObject(XMLFile);
     }
 
-    public CurrencyValues(List<CurrencyItem> valueList) {
-        this.currencyItemList = valueList;
-    }
-    public CurrencyValues(){
-        currencyItemList = new ArrayList<>();
-    }
-
-    public CurrencyItem getItem(String currencyItemName){
-        for(CurrencyItem currencyItem : currencyItemList){
-            if(currencyItem.getName().equals(currencyItemName)){
-                return currencyItem;
+    public double GetValue(String charCode) throws Exception {
+        double value= Double.parseDouble("-1");
+        JSONArray values = jsonValues.getJSONObject("ValCurs").getJSONArray("Valute");
+        for (int i = 0; i < values.length(); ++i) {
+            JSONObject currentValute = values.getJSONObject(i);
+            if (currentValute.getString("CharCode").equals(charCode)) {
+                value = Double.parseDouble(currentValute.getString("Value").replace(",", "."));
             }
         }
-        return null;
+        if (value < 0) {
+            throw new Exception("Can't find requested char code");
+        }
+        return value;
     }
+
 }
