@@ -1,6 +1,8 @@
 package edu.phystech.currency_weather.services;
 
 import edu.phystech.currency_weather.utils.CurrencyValues;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,6 +15,12 @@ import java.util.List;
 public class CurrencyService {
     private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
     private final static String charCode = "USD";
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public CurrencyService(RestTemplateBuilder builder){
+        restTemplate = builder.build();
+    }
 
     public List<Double> getCurrencyData(int nDays){
         RestTemplate restTemplate = new RestTemplate();
