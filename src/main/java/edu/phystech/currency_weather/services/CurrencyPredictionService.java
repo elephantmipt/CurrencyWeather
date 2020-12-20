@@ -4,6 +4,7 @@ import edu.phystech.currency_weather.utils.WeatherData;
 import org.springframework.stereotype.Service;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -37,7 +38,7 @@ public class CurrencyPredictionService {
                 xs[i] = weatherDataList.get(i).getAvgTemperature();
             }
 
-            List<double[]> dataset = List.of(xs, ys);
+            List<double[]> dataset = Arrays.asList(xs, ys);
             for(int i = 0; i < dataset.get(0).length; ++i) {
                 regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
             }
