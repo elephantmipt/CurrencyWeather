@@ -1,11 +1,8 @@
 package edu.phystech.demo.services;
 
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.phystech.demo.utils.WeatherData;
 import edu.phystech.demo.utils.Secrets;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
@@ -28,12 +25,10 @@ public class WeatherService {
     private static final String DEFAULT_CITY = "Moscow";
 
     private final RestTemplate restTemplate;
-    private final ObjectMapper mapper;
 
     @Autowired
-    public WeatherService(RestTemplateBuilder builder, @Autowired ObjectMapper objectMapper){
+    public WeatherService(RestTemplateBuilder builder){
         restTemplate = builder.build();
-        mapper = objectMapper;
     }
 
     public List<WeatherData> getWeatherDataHistory(int n) {
@@ -57,12 +52,7 @@ public class WeatherService {
     }
 
     private WeatherData parseWeatherData(ResponseEntity<String> response) {
-        JsonNode json;
-        try {
-            json = mapper.readTree(response.getBody());
-        } catch (JsonProcessingException e) {
-            return null;
-        }
+        JSONObject json = new JSONObject(response.getBody());
         return new WeatherData(json);
     }
 

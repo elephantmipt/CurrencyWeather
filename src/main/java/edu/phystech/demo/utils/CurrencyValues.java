@@ -17,7 +17,7 @@ public class CurrencyValues implements Serializable {
     }
 
     public double GetValue(String charCode) throws Exception {
-        double value= Double.parseDouble("-1");
+        double value= -1.;
         JSONArray values = jsonValues.getJSONObject("ValCurs").getJSONArray("Valute");
         for (int i = 0; i < values.length(); ++i) {
             JSONObject currentValute = values.getJSONObject(i);

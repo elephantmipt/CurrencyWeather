@@ -1,6 +1,6 @@
 package edu.phystech.demo.utils;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import org.json.JSONObject;
 
 public class WeatherData {
     private final double maxTemperature;
@@ -17,15 +17,15 @@ public class WeatherData {
         this.maxWind = maxWind;
     }
 
-    public WeatherData(JsonNode json) {
+    public WeatherData(JSONObject json) {
         if (json.get("forecast") != null) {
-            json = json.get("forecast").get("forecastday").get(0).get("day");
+            json = json.getJSONObject("forecast").getJSONArray("forecastday").getJSONObject(0).getJSONObject("day");
         }
-        maxTemperature = json.get("maxtemp_c").asDouble();
-        minTemperature = json.get("mintemp_c").asDouble();
-        avgTemperature = json.get("avgtemp_c").asDouble();
-        avgHumidity = json.get("avghumidity").asInt();
-        maxWind = json.get("maxwind_kph").asDouble();
+        maxTemperature = json.getDouble("maxtemp_c");
+        minTemperature = json.getDouble("mintemp_c");
+        avgTemperature = json.getDouble("avgtemp_c");
+        avgHumidity = json.getInt("avghumidity");
+        maxWind = json.getDouble("maxwind_kph");
 
     }
 
