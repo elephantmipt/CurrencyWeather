@@ -22,7 +22,7 @@ public class WeatherController {
     }
 
     @GetMapping("/weather-service")
-    public List<WeatherData> getWeatherHistory(@RequestParam int nDays, @RequestParam @Nullable String city) {
+    public List<WeatherData> getWeatherHistory(@RequestParam int nDays, @RequestParam(required = false) @Nullable String city) {
         if (city == null) {
             return weatherService.getWeatherDataHistory(nDays);
         }
