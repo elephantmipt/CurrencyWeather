@@ -1,6 +1,6 @@
-package edu.phystech.weather_currency.services;
+package edu.phystech.currency_weather.services;
 
-import edu.phystech.weather_currency.utils.CurrencyValues;
+import edu.phystech.currency_weather.utils.CurrencyValues;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

@@ -1,6 +1,6 @@
-package edu.phystech.weather_currency.controllers;
+package edu.phystech.currency_weather.controllers;
 
-import edu.phystech.weather_currency.services.CurrencyPredictionService;
+import edu.phystech.currency_weather.services.CurrencyPredictionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

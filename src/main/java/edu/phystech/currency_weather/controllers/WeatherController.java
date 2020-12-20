@@ -1,7 +1,7 @@
-package edu.phystech.weather_currency.controllers;
+package edu.phystech.currency_weather.controllers;
 
-import edu.phystech.weather_currency.services.WeatherService;
-import edu.phystech.weather_currency.utils.WeatherData;
+import edu.phystech.currency_weather.services.WeatherService;
+import edu.phystech.currency_weather.utils.WeatherData;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
