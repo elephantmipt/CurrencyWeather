@@ -20,6 +20,7 @@ public class CurrencyPredictionService {
     public CurrencyPredictionService(WeatherService weatherService, CurrencyService currencyService) {
         this.weatherService = weatherService;
         this.currencyService = currencyService;
+        this.regressionModel = new SimpleRegression();
         fit();
     }
 

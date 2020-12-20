@@ -27,7 +27,7 @@ public class CurrencyService {
                     restTemplate.getForEntity(createRequestString(day), String.class).getBody();
             CurrencyValues currencyValues = new CurrencyValues(response);
             try {
-                currencyList.add(currencyValues.GetValue("USD"));
+                currencyList.add(currencyValues.GetValue(charCode));
             } catch (Exception e) {
                 System.out.println("Failed");
             }
