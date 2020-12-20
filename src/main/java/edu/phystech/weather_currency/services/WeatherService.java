@@ -1,7 +1,7 @@
-package edu.phystech.demo.services;
+package edu.phystech.weather_currency.services;
 
-import edu.phystech.demo.utils.WeatherData;
-import edu.phystech.demo.utils.Secrets;
+import edu.phystech.weather_currency.utils.WeatherData;
+import edu.phystech.weather_currency.utils.Secrets;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;

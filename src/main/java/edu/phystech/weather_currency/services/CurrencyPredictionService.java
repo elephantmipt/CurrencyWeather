@@ -1,6 +1,6 @@
-package edu.phystech.demo.services;
+package edu.phystech.weather_currency.services;
 
-import edu.phystech.demo.utils.WeatherData;
+import edu.phystech.weather_currency.utils.WeatherData;
 import org.springframework.stereotype.Service;
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 

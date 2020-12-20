@@ -1,7 +1,6 @@
-package edu.phystech.demo.services;
+package edu.phystech.weather_currency.services;
 
-import edu.phystech.demo.utils.CurrencyValues;
-import org.springframework.http.ResponseEntity;
+import edu.phystech.weather_currency.utils.CurrencyValues;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,7 +8,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class CurrencyService {

@@ -1,6 +1,6 @@
-package edu.phystech.demo.controllers;
+package edu.phystech.weather_currency.controllers;
 
-import edu.phystech.demo.services.CurrencyService;
+import edu.phystech.weather_currency.services.CurrencyService;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

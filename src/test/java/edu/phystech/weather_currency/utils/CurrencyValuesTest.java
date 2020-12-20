@@ -1,4 +1,4 @@
-package edu.phystech.demo.utils;
+package edu.phystech.weather_currency.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
