@@ -22,7 +22,11 @@ public class CurrencyValues implements Serializable {
         for (int i = 0; i < values.length(); ++i) {
             JSONObject currentValute = values.getJSONObject(i);
             if (currentValute.getString("CharCode").equals(charCode)) {
-                value = Double.parseDouble(currentValute.getString("Value").replace(",", "."));
+                try {
+                    value = Double.parseDouble(currentValute.getString("Value").replace(",", "."));
+                } catch (Exception e) {
+                    System.out.println("Failed");
+                }
             }
         }
         if (value < 0) {
