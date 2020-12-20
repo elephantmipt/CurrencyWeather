@@ -14,37 +14,39 @@ public class CurrencyPredictionService {
         private WeatherService weatherService;
         private CurrencyService currencyService;
 
-        private final int PERIOD_SIZE_TO_FIT = 7;
+        private final static int PERIOD_SIZE_TO_FIT = 7;
 
 
     public CurrencyPredictionService(WeatherService weatherService, CurrencyService currencyService) {
         this.weatherService = weatherService;
         this.currencyService = currencyService;
+        fit();
     }
 
     public  double predict(){
             WeatherData tomorrowForecast = weatherService.getForecastForTomorrow();
             return predict(tomorrowForecast);
+    }
+    private void fit(){
+        List<WeatherData> weatherDataList = weatherService.getWeatherDataHistory(PERIOD_SIZE_TO_FIT);
+        List<Double> currencyList = currencyService.getCurrencyData(PERIOD_SIZE_TO_FIT);
+
+        double[] xs = new double[weatherDataList.size()];
+        double[] ys = new double[weatherDataList.size()];
+        for (int i = 0; i < weatherDataList.size(); ++i) {
+            ys[i] = currencyList.get(i);
+            xs[i] = weatherDataList.get(i).getAvgTemperature();
         }
 
-        private void fit() throws Exception {
-            List<WeatherData> weatherDataList = weatherService.getWeatherDataHistory(PERIOD_SIZE_TO_FIT);
-            List<Double> currencyList = currencyService.getCurrencyData(PERIOD_SIZE_TO_FIT);
-
-            double[] xs = new double[weatherDataList.size()];
-            double[] ys = new double[weatherDataList.size()];
-            for (int i = 0; i < weatherDataList.size(); ++i) {
-                ys[i] = currencyList.get(i);
-                xs[i] = weatherDataList.get(i).getAvgTemperature();
-            }
-
-            List<double[]> dataset = Arrays.asList(xs, ys);
-            for(int i = 0; i < dataset.get(0).length; ++i) {
-                regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
-            }
+        List<double[]> dataset = Arrays.asList(xs, ys);
+        for(int i = 0; i < dataset.get(0).length; ++i) {
+            regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
         }
+    }
 
-        private double predict(WeatherData weatherData){
-            return regressionModel.predict(weatherData.getAvgHumidity());
-        }
+
+
+    private double predict(WeatherData weatherData){
+        return regressionModel.predict(weatherData.getAvgHumidity());
+    }
 }
