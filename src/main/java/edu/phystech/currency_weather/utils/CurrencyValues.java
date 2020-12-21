@@ -1,11 +1,13 @@
 package edu.phystech.currency_weather.utils;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.springframework.beans.TypeMismatchException;
 
 
 public class CurrencyValues implements Serializable {
@@ -16,7 +18,7 @@ public class CurrencyValues implements Serializable {
         jsonValues = XML.toJSONObject(xmlFile);
     }
 
-    public double GetValue(String charCode) throws Exception {
+    public double GetValue(String charCode) {
         double value= -1.;
         JSONArray values = jsonValues.getJSONObject("ValCurs").getJSONArray("Valute");
         for (int i = 0; i < values.length(); ++i) {
@@ -26,7 +28,7 @@ public class CurrencyValues implements Serializable {
             }
         }
         if (value < 0) {
-            throw new Exception("Can't find requested char code");
+            throw new IllegalArgumentException("Invalid char code");
         }
         return value;
     }
