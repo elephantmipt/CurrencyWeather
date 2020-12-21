@@ -20,8 +20,10 @@ class CurrencyPredictionServiceTest {
 
     @Test
     public void predictTest() {
-        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(new WeatherService(new RestTemplateBuilder()), new CurrencyService());
-        assertNotNull(currencyPredictionService.predict());
+        CurrencyService currencyService = new CurrencyService();
+        WeatherService weatherService = new WeatherService(new RestTemplateBuilder());
+        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(weatherService,currencyService);
+        assertTrue(currencyPredictionService.predict() > 0);
     }
 
 }
