@@ -14,7 +14,11 @@ import java.util.List;
 @Service
 public class CurrencyService {
     private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
-    private final static String charCode = "USD";
+    private static String charCode = "USD";
+
+    public void setCharCode(String charCode) {
+        this.charCode = charCode;
+    }
 
 
     public List<Double> getCurrencyData(int nDays){
