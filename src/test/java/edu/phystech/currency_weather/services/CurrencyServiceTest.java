@@ -8,7 +8,7 @@ class CurrencyServiceTest {
     @Test
     void catchTest() {
         CurrencyService currencyService = new CurrencyService();
-        currencyService.setCharCode("BBB");
+        currencyService.setCHAR_CODE("BBB");
         assertEquals(currencyService.getCurrencyData(7).size(), 0);
     }
 

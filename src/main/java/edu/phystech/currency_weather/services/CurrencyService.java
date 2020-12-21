@@ -11,11 +11,11 @@ import java.util.List;
 
 @Service
 public class CurrencyService {
-    private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
-    private String charCode = "USD";
+    private static final String BASE_URL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
+    private String CHAR_CODE = "USD";
 
-    public void setCharCode(String charCode) {
-        this.charCode = charCode;
+    public void setCHAR_CODE(String charCode) {
+        this.CHAR_CODE = charCode;
     }
 
 
@@ -29,7 +29,7 @@ public class CurrencyService {
                     restTemplate.getForEntity(createRequestString(day), String.class).getBody();
             CurrencyValues currencyValues = new CurrencyValues(response);
             try {
-                currencyList.add(currencyValues.GetValue(charCode));
+                currencyList.add(currencyValues.GetValue(CHAR_CODE));
             } catch (Exception e) {
                 System.err.println("Failed to load currency");
             }
@@ -41,6 +41,6 @@ public class CurrencyService {
     }
 
     private String createRequestString(LocalDate date) {
-        return baseURL + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return BASE_URL + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 }

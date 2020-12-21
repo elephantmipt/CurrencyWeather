@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 public class WeatherService {
-    private final String API_KEY = Secrets.WEATHER_API_KEY;
+    private final String apiKey = Secrets.WEATHER_API_KEY;
     private static final String BASE_URL = "http://api.weatherapi.com/v1";
     private static final String API_HISTORY_METHOD = "/history.json";
     private static final String API_FORECAST_METHOD = "/forecast.json";
@@ -57,12 +57,12 @@ public class WeatherService {
     }
 
     private String createRequestString(LocalDate date, String city) {
-        return BASE_URL + API_HISTORY_METHOD + "?key=" + API_KEY + "&q=" + city + "&dt=" +
+        return BASE_URL + API_HISTORY_METHOD + "?key=" + apiKey + "&q=" + city + "&dt=" +
                 date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 
     private String createForecastRequestString(String city) {
-        return BASE_URL + API_FORECAST_METHOD + "?key=" + API_KEY + "&q=" + city + "&days=1";
+        return BASE_URL + API_FORECAST_METHOD + "?key=" + apiKey + "&q=" + city + "&days=1";
     }
 
     public WeatherData getForecastForTomorrow() {
