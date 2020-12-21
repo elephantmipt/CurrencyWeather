@@ -15,6 +15,6 @@ class WeatherServiceTest {
         assertNotNull(weatherService.getWeatherDataHistory(7));
         assertNotNull(weatherService.getForecastForTomorrow("Moscow"));
         assertNotNull(weatherService.getForecastForTomorrow());
-
+        assertNotNull(weatherService.getWeatherDataHistory(7, "Moscow"));
     }
 }

@@ -33,7 +33,7 @@ public class CurrencyService {
             try {
                 currencyList.add(currencyValues.GetValue(charCode));
             } catch (Exception e) {
-                System.out.println("Failed");
+                System.out.println("Failed to load currency");
             }
 
 

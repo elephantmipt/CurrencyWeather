@@ -18,12 +18,5 @@ class CurrencyPredictionServiceTest {
         assertEquals(weatherData.getMaxWind(), 12.);
     }
 
-    @Test
-    public void predictTest() {
-        CurrencyService currencyService = new CurrencyService();
-        WeatherService weatherService = new WeatherService(new RestTemplateBuilder());
-        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(weatherService, currencyService);
-        assertTrue(currencyPredictionService.predict() > 0);
-    }
 
 }
