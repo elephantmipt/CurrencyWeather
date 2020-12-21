@@ -40,8 +40,10 @@ public class CurrencyPredictionService {
         }
 
         List<double[]> dataset = Arrays.asList(xs, ys);
-        for(int i = 0; i < dataset.get(0).length; ++i) {
-            regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
+        if (dataset.size() > 0) {
+            for (int i = 0; i < dataset.get(0).length; ++i) {
+                regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
+            }
         }
     }
 

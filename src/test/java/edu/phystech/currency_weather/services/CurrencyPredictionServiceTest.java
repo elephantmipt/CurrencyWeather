@@ -22,7 +22,7 @@ class CurrencyPredictionServiceTest {
     public void predictTest() {
         CurrencyService currencyService = new CurrencyService();
         WeatherService weatherService = new WeatherService(new RestTemplateBuilder());
-        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(weatherService,currencyService);
+        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(weatherService, currencyService);
         assertTrue(currencyPredictionService.predict() > 0);
     }
 
