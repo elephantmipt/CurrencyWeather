@@ -19,4 +19,21 @@ class CurrencyValuesTest {
         CurrencyValues CV = new CurrencyValues(response);
         assertTrue(CV.GetValue("USD") > 0.);
     }
+
+    @Test
+    void TestEx() {
+        String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
+        String reqString =  baseURL + LocalDate.now().minusDays(1).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForEntity(reqString, String.class).getBody();
+        CurrencyValues CV = new CurrencyValues(response);
+        try {
+            CV.GetValue("BBB");
+        } catch (Exception e) {
+            assertTrue(true);
+            return;
+        }
+        assertTrue(false);
+
+    }
 }

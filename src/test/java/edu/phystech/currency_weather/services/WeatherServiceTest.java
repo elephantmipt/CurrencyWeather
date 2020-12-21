@@ -12,6 +12,8 @@ class WeatherServiceTest {
         WeatherService weatherService = new WeatherService(new RestTemplateBuilder());
         WeatherData result = weatherService.getForecastData("Moscow");
         assertNotNull(result);
+        assertNotNull(weatherService.getWeatherDataHistory(7));
+        assertNotNull(weatherService.getForecastForTomorrow("Moscow"));
 
     }
 }
