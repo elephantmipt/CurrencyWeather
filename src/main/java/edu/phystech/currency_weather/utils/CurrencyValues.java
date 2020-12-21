@@ -1,13 +1,11 @@
 package edu.phystech.currency_weather.utils;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
-import org.springframework.beans.TypeMismatchException;
 
 
 public class CurrencyValues implements Serializable {
