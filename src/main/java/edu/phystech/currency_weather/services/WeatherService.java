@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 public class WeatherService {
-    private final static String API_KEY = Secrets.WEATHER_API_KEY;
+    private static final String API_KEY = Secrets.WEATHER_API_KEY;
     private static final String BASE_URL = "http://api.weatherapi.com/v1";
     private static final String API_HISTORY_METHOD = "/history.json";
     private static final String API_FORECAST_METHOD = "/forecast.json";

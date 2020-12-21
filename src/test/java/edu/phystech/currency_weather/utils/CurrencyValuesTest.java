@@ -17,7 +17,7 @@ class CurrencyValuesTest {
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForEntity(reqString, String.class).getBody();
         CurrencyValues CV = new CurrencyValues(response);
-        assertTrue(CV.GetValue("USD") > 0.);
+        assertTrue(CV.getValue("USD") > 0.);
     }
 
     @Test
@@ -28,7 +28,7 @@ class CurrencyValuesTest {
         String response = restTemplate.getForEntity(reqString, String.class).getBody();
         CurrencyValues CV = new CurrencyValues(response);
         try {
-            CV.GetValue("BBB");
+            CV.getValue("BBB");
         } catch (Exception e) {
             assertTrue(true);
             return;

@@ -16,7 +16,7 @@ public class CurrencyValues implements Serializable {
         jsonValues = XML.toJSONObject(xmlFile);
     }
 
-    public double GetValue(String charCode) {
+    public double getValue(String charCode) {
         double value= -1.;
         JSONArray values = jsonValues.getJSONObject("ValCurs").getJSONArray("Valute");
         for (int i = 0; i < values.length(); ++i) {

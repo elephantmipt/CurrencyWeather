@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class CurrencyService {
     private static final String BASE_URL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
     private String charCode = "USD";
-    private final static Logger CURRENCY_LOGGER = Logger.getLogger("Currency");
+    private static final Logger CURRENCY_LOGGER = Logger.getLogger("Currency");
 
     public void setCharCode(String charCode) {
         this.charCode = charCode;
@@ -32,7 +32,7 @@ public class CurrencyService {
                     restTemplate.getForEntity(createRequestString(day), String.class).getBody();
             CurrencyValues currencyValues = new CurrencyValues(response);
             try {
-                currencyList.add(currencyValues.GetValue(charCode));
+                currencyList.add(currencyValues.getValue(charCode));
             } catch (Exception e) {
                 CURRENCY_LOGGER.log(Level.SEVERE, "Exception occur", e);
             }
