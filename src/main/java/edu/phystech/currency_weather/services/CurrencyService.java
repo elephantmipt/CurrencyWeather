@@ -8,11 +8,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class CurrencyService {
     private static final String BASE_URL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
     private String CHAR_CODE = "USD";
+    private final static Logger CURRENCY_LOGGER = Logger.getLogger("Currency");
 
     public void setCHAR_CODE(String charCode) {
         this.CHAR_CODE = charCode;
@@ -31,7 +34,7 @@ public class CurrencyService {
             try {
                 currencyList.add(currencyValues.GetValue(CHAR_CODE));
             } catch (Exception e) {
-                System.err.println("Failed to load currency");
+                CURRENCY_LOGGER.log(Level.SEVERE, "Exception occur", e);
             }
 
 
