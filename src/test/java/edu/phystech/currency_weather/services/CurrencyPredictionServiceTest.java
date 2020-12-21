@@ -2,6 +2,7 @@ package edu.phystech.currency_weather.services;
 
 import edu.phystech.currency_weather.utils.WeatherData;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +16,12 @@ class CurrencyPredictionServiceTest {
         assertEquals(weatherData.getAvgHumidity(), 12);
         assertEquals(weatherData.getAvgTemperature(), 13.);
         assertEquals(weatherData.getMaxWind(), 12.);
+    }
+
+    @Test
+    public void predictTest() {
+        CurrencyPredictionService currencyPredictionService = new CurrencyPredictionService(new WeatherService(new RestTemplateBuilder()), new CurrencyService());
+        assertNotNull(currencyPredictionService.predict());
     }
 
 }
