@@ -24,9 +24,9 @@ public class CurrencyPredictionService {
         fit();
     }
 
-    public  double predict(){
+    public double predict(){
             WeatherData tomorrowForecast = weatherService.getForecastForTomorrow();
-            return predict(tomorrowForecast);
+            return regressionModel.predict(tomorrowForecast.getAvgHumidity());
     }
     private void fit(){
         List<WeatherData> weatherDataList = weatherService.getWeatherDataHistory(PERIOD_SIZE_TO_FIT);
@@ -40,16 +40,10 @@ public class CurrencyPredictionService {
         }
 
         List<double[]> dataset = Arrays.asList(xs, ys);
-        if (dataset.size() > 0) {
-            for (int i = 0; i < dataset.get(0).length; ++i) {
-                regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
-            }
+
+        for (int i = 0; i < dataset.get(0).length; ++i) {
+            regressionModel.addData(dataset.get(0)[i], dataset.get(1)[i]);
         }
-    }
 
-
-
-    private double predict(WeatherData weatherData){
-        return regressionModel.predict(weatherData.getAvgHumidity());
     }
 }
