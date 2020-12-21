@@ -12,8 +12,8 @@ public class CurrencyValues implements Serializable {
 
     private JSONObject jsonValues;
 
-    public CurrencyValues(String XMLFile) {
-        jsonValues = XML.toJSONObject(XMLFile);
+    public CurrencyValues(String xmlFile) {
+        jsonValues = XML.toJSONObject(xmlFile);
     }
 
     public double GetValue(String charCode) throws Exception {

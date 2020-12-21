@@ -14,7 +14,7 @@ public class CurrencyPredictionService {
         private WeatherService weatherService;
         private CurrencyService currencyService;
 
-        private final static int PERIOD_SIZE_TO_FIT = 7;
+        private static final int PERIOD_SIZE_TO_FIT = 7;
 
 
     public CurrencyPredictionService(WeatherService weatherService, CurrencyService currencyService) {

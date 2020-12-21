@@ -1,8 +1,6 @@
 package edu.phystech.currency_weather.services;
 
 import edu.phystech.currency_weather.utils.CurrencyValues;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,7 +12,7 @@ import java.util.List;
 @Service
 public class CurrencyService {
     private final static String baseURL = "http://www.cbr.ru/scripts/XML_daily.asp?date_req=";
-    private static String charCode = "USD";
+    private String charCode = "USD";
 
     public void setCharCode(String charCode) {
         this.charCode = charCode;
@@ -33,7 +31,7 @@ public class CurrencyService {
             try {
                 currencyList.add(currencyValues.GetValue(charCode));
             } catch (Exception e) {
-                System.out.println("Failed to load currency");
+                System.err.println("Failed to load currency");
             }
 
 
