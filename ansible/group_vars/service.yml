@@ -1,0 +1,7 @@
+---
+ansible_ssh_user : mftiedu
+ansible_ssh_pass : cHONtic
+ansible_sudo_pass : cHONtic
+images_prefix : bnn
+eureka_service_image_name : elephantmipt/eureka-service
+predict_service_image_name : elephantmipt/predict-service

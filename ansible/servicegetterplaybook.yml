@@ -1,0 +1,27 @@
+---
+- name: servicegetterplaybook
+  hosts: service_getters
+  become: yes
+
+  tasks:
+    - name: show dir
+      command: ls
+      register: output
+
+    - debug:
+        var: output
+
+    - name: pull weatherservice image
+      command: docker pull "{{ weather_service_image_name }}"
+
+    - name: pull currency service image
+      command: docker pull "{{ currency_service_image_name }}"
+
+    - name: create docker-compose file
+      template:
+        src: "{{ deploy_path }}/CurrencyWeather/ansible/templates/docker-compose.yml.j2"
+        dest: "{{ deploy_path }}/docker-compose.yml"
+
+    - name: start services with docker-compose
+      docker_compose:
+        project_src: "{{ deploy_path }}"
