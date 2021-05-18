@@ -1,7 +1,7 @@
 version: "3"
 services:
   eurekaserver:
-    image: "{{ eureka_image_name }}"
+    image: "{{ eureka_service_image_name }}"
     ports:
       - "8761:8761"
   weatherservice:

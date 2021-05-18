@@ -19,7 +19,7 @@
 
     - name: create docker-compose file
       template:
-        src: "{{ deploy_path }}/CurrencyWeather/ansible/templates/docker-compose.yml.j2"
+        src: "{{ deploy_path }}/ansible/templates/docker-compose.yml.j2"
         dest: "{{ deploy_path }}/docker-compose.yml"
 
     - name: start services with docker-compose
