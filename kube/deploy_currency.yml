@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: CurrencyService
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: CurrencyService
+  template:
+    metadata:
+      name: CurrencyService
+      labels:
+        app: CurrencyService
+    spec:
+      containers:
+        - image: elephantmipt/currency-service
+          name: currency-service
+          ports:
+            - containerPort: 8082
+          imagePullPolicy: IfNotPresent

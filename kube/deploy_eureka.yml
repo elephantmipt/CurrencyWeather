@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: EurekaService
+  template:
+    metadata:
+      name: EurekaService
+      labels:
+        app: EurekaService
+    spec:
+      containers:
+        - image: elephantmipt/eureka-service
+          name: eureka-service
+          ports:
+            - containerPort: 8761
+          imagePullPolicy: IfNotPresent

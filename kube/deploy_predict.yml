@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PredictService
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: PredictService
+  template:
+    metadata:
+      name: PredictService
+      labels:
+        app: PredictService
+    spec:
+      containers:
+        - image: elephantmipt/predict-service
+          name: predict-service
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent
