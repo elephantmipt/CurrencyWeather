@@ -1,0 +1,10 @@
+---
+ansible_ssh_user : edumfti
+ansible_ssh_pass : aNSHaPi1234
+ansible_sudo_pass : aNSHaPi1234
+images_prefix : bnn
+weather_service_image_name : elephantmipt/weather-service
+currency_service_image_name : elephantmipt/currency-service
+eureka_service_image_name : elephantmipt/eureka-service
+predict_service_image_name : elephantmipt/predict-service
+deploy_path : /edu/balagansky

@@ -1,0 +1,27 @@
+---
+- name: serviceplaybook
+  hosts: service
+  become: yes
+
+  tasks:
+    - name: show dir
+      command: ls
+      register: output
+
+    - debug:
+        var: output
+
+    - name: pull predict image
+      command: docker pull "{{ predict_service_image_name }}"
+
+    - name: pull eureka service image
+      command: docker pull "{{ eureka_service_image_name }}"
+
+    - name: create docker-compose file
+      template:
+        src: "{{ deploy_path }}/ansible/templates/docker-compose.yml.j2"
+        dest: "{{ deploy_path }}/docker-compose.yml"
+
+    - name: start services with docker-compose
+      docker_compose:
+        project_src: "{{ deploy_path }}"

@@ -1,0 +1,10 @@
+---
+ansible_ssh_user : mftiedu
+ansible_ssh_pass : cHONtic
+ansible_sudo_pass : cHONtic
+images_prefix : bnn
+eureka_service_image_name : elephantmipt/eureka-service
+predict_service_image_name : elephantmipt/predict-service
+weather_service_image_name : elephantmipt/weather-service
+currency_service_image_name : elephantmipt/currency-service
+deploy_path : /edu/balagansky

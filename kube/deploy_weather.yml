@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: WeatherService
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: WeatherService
+  template:
+    metadata:
+      name: WeatherService
+      labels:
+        app: WeatherService
+    spec:
+      containers:
+        - image: elephantmipt/weather-service
+          name: weather-service
+          ports:
+            - containerPort: 8081
+          imagePullPolicy: IfNotPresent
